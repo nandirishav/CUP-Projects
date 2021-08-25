@@ -1,0 +1,313 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.links-container {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#nav-links-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+}
+
+.nav-links {
+  padding: 0 20px;
+  list-style-type: none;
+  margin-right: 1rem;
+  color: #f5f5f7;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+}
+
+.offer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f7;
+}
+
+.offer p,
+a {
+  padding: 12px 0;
+  text-decoration: none;
+}
+
+main {
+  background-color: #fbfbfd;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-image-container {
+  text-align: center;
+  margin-top: 2.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.main-heading {
+  font-size: 56px;
+  line-height: 1.08349;
+  font-weight: 600;
+  letter-spacing: -0.002em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.sub-heading {
+  font-size: 27px;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+  font-weight: 400;
+  padding: 15px;
+}
+
+.pricing {
+  color: #86868b;
+  letter-spacing: 1.5px;
+}
+
+.hero-link-container {
+  margin-top: 1rem;
+}
+
+.hero-links {
+  font-size: 20px;
+  padding-right: 1.5rem;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image {
+  width: 1000px;
+  /* height: 450px; */
+  transform: translatey(-8%);
+}
+
+.hero-image-container {
+  position: relative;
+}
+
+.text-1 {
+  position: absolute;
+  z-index: 3;
+  transform: translateX(235%);
+}
+
+.text {
+  position: absolute;
+  z-index: 3;
+  transform: translatex(150%);
+  /* transform: translatey(10%); */
+}
+
+.text-2 {
+  position: absolute;
+  z-index: 3;
+  transform: translatex(120%);
+  /* transform: translatey(10%); */
+}
+
+.unit-image.unit-image-iphone-12-pro-iphone-12-pro-us {
+  width: 100%;
+  height: 617px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url(https://www.apple.com/v/home/ab/images/heroes/iphone-12-pro/iphone_12_pro_us__e5oyysg4k0ya_medium.jpg);
+  /* transform: translatex(30%); */
+}
+
+.unit-image.unit-image-ipad-pro-ipad-pro-us {
+  width: 100%;
+  height: 550px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/heroes/ipad-pro/hero_ipad_pro_non_avail__fcrsmhs4b7ma_large.jpg);
+}
+
+.container-of-two {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.left,
+.right {
+  flex: 48%;
+}
+
+.buy-mac {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/promos/back-to-school-2021/promo_bts__bg3cb4kaoqoi_large.jpg);
+}
+
+.buy-watch {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/in/home/promos/watch-series-6/images/promo_watch_series_6_lte__f8lrasjnry2y_large.jpg);
+}
+
+.intro-text {
+  position: absolute;
+  margin-top: 2.5rem;
+  transform: translatex(30%);
+
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+}
+
+.headline {
+  width: 450px;
+  font-size: 38px;
+  font-weight: 600;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+}
+
+.headline-2 {
+  width: 450px;
+  font-size: 30px;
+  transform: translatex(30%);
+  letter-spacing: 2;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+}
+.series {
+  transform: translatex(37%);
+  letter-spacing: 2px;
+}
+
+.future-text {
+  transform: translatex(16%);
+  margin: 10px 0;
+}
+
+.links-wrapper {
+  transform: translatex(30%);
+}
+
+.buy-imac {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/promos/imac/promo_imac__crg641tip4q6_large.jpg);
+}
+
+.buy-air-tag {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/promos/airtag/promo_airtag__e6b73a64nno2_large.jpg);
+}
+
+.intro-text-1 {
+  /* left: 25%; */
+}
+
+.headline-3,
+.hello {
+  width: 450px;
+  font-size: 35px;
+  letter-spacing: 2;
+  line-height: 1.5;
+  font-weight: 600;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  transform: translateX(37%);
+}
+
+.hello {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.apple-music {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/promos/apple-music-spatial-audio/promo_spatial_audio_billie_eilish__ltg83lkpcqq2_large.jpg);
+}
+
+.apple-tv {
+  width: 100%;
+  height: 580px;
+  background-position: center;
+  background-image: url(https://www.apple.com/v/home/ab/images/promos/tv-plus-coda-updated/promo_coda__b4z92qy59piq_large.jpg);
+}
+
+.headline-4,
+.headline-5,
+.audio {
+  width: 450px;
+  font-size: 35px;
+  letter-spacing: 2;
+  line-height: 1.5;
+  font-weight: 600;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  transform: translateX(25%);
+}
+
+.audio {
+  width: 250px;
+  font-size: 18px;
+  transform: translateX(38%);
+}
+
+footer {
+  background-color: #f5f5f7;
+}
+
+.footer-info {
+  font-size: 13px;
+  padding: 1% 15%;
+  color: #86868f;
+}
+
+hr {
+  width: 1050px;
+  margin: 0 auto;
+}
+
+.footer-services {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2% 7%;
+  color: #656569;
+}
+
+h6 {
+  font-size: 13px;
+  padding: 1rem 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 0 0 5px 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
