@@ -4,7 +4,7 @@ const params = new URLSearchParams(window.location.search);
 var id = params.get("id");
 
 //Fetching Superhero details from Superhero API
-fetch(`https://superheroapi.com/api.php/1953802511419258/${id}`)
+fetch(`https://superheroapi.com/api.php/829469487718011/${id}`)
   .then((res) => res.json())
   .then((data) => showDetails(data))
   .catch((err) => console.log(err));

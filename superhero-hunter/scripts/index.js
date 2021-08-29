@@ -7,7 +7,7 @@ inputName.onkeyup = function () {
 
   if (name !== "") {
     fetch(
-      "https://superheroapi.com/api.php/1953802511419258/search/" + name.trim()
+      "https://superheroapi.com/api.php/829469487718011/search/" + name.trim()
     )
       .then((response) => response.json())
       .then((data) => {
