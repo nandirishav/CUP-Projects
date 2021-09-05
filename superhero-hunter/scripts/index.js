@@ -24,7 +24,7 @@ function createCard(data) {
   } else {
     results.innerHTML = null;
 
-    for (let i = 0; i < data.results.length && i < 10; i++) {
+    for (let i = 0; i < data.results.length; i++) {
       var card = document.createElement("div");
       var cardImage = document.createElement("img");
       var cardContainer = document.createElement("div");
