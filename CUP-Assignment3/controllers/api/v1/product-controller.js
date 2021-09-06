@@ -31,7 +31,11 @@ module.exports.getProduct = async (req, res) => {
 module.exports.findProductById = async (req, res) => {
   try {
     const data = await ProductModel.findById(req.params.id);
-    res.status(200).send({ data: data });
+    if (data._id) {
+      res.status(200).send({ data: data });
+    } else {
+      res.status(404).json({ msg: "Product was not Found" });
+    }
   } catch (error) {
     //   console.log("Error in getting Product", error);
     res.status(404).json({ msg: "Product not Found" });
@@ -48,9 +52,13 @@ module.exports.updateProduct = async (req, res) => {
       },
       { new: true }
     );
-    res.status(200).json({ msg: "Updated Product", product });
+    if (product._id) {
+      res.status(200).json({ msg: "Updated Product", product });
+    } else {
+      res.status(500).json({ msg: "Product not Found" });
+    }
   } catch (error) {
-    console.log("Error in updating Product", error);
+    // console.log("Error in updating Product", error);
     res.status(500).json({ msg: "Product not Found" });
   }
 };
@@ -58,10 +66,17 @@ module.exports.updateProduct = async (req, res) => {
 //delete product
 module.exports.deleteProduct = async (req, res) => {
   try {
-    await ProductModel.findByIdAndDelete(req.params.id);
-    res.status(200).json({ msg: "Product has been deleted..." });
+    const product = await ProductModel.findById(req.params.id);
+    try {
+      await product.delete();
+      res.status(200).json({ msg: "Product has been deleted..." });
+    } catch (error) {
+      res
+        .status(404)
+        .json({ msg: "Product was not found or already deleted !" });
+    }
   } catch (error) {
-    console.log("Error in deleting Product", error);
-    res.status(500).json({ msg: "Product could not be deleted !" });
+    // console.log("Error in deleting Product", error);
+    res.status(500).json(error);
   }
 };
