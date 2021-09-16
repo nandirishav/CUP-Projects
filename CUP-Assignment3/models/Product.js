@@ -17,6 +17,11 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 1,
     },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "UserModel",
+    },
   },
   { timestamps: true }
 );

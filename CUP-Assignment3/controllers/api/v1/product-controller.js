@@ -7,8 +7,12 @@ module.exports.createProduct = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    // const data = await new ProductModel(req.body);
-    const data = await ProductModel.create(req.body);
+    // const data = await ProductModel.create(req.body);
+    const data = await new ProductModel({
+      ...req.body,
+      owner: req.user._id,
+    });
+    await data.save();
     // console.log(data);
     res.status(200).send({ msg: "Product created Success", data: data });
   } catch (error) {
@@ -19,8 +23,15 @@ module.exports.createProduct = async (req, res) => {
 
 module.exports.getProduct = async (req, res) => {
   try {
-    const data = await ProductModel.find({});
-    res.status(200).send({ msg: "Products", data: data });
+    // const data = await ProductModel.find({});
+
+    // approach 1
+    //find all products belonging to the respect. user
+    const data = await ProductModel.find({ owner: req.user._id });
+
+    //approach 2
+    // await req.user.populate("myProducts").execPopulate();
+    res.send(data);
   } catch (error) {
     console.log("Error in getting Product", error);
     res.status(500).json({ msg: "Internal Server Error" });
@@ -29,52 +40,69 @@ module.exports.getProduct = async (req, res) => {
 
 //find product
 module.exports.findProductById = async (req, res) => {
+  const _id = req.params.id;
   try {
-    const data = await ProductModel.findById(req.params.id);
-    if (data._id) {
-      res.status(200).send({ data: data });
-    } else {
-      res.status(404).json({ msg: "Product was not Found" });
+    // const data = await ProductModel.findById(_id);
+    const data = await ProductModel.findOne({ _id, owner: req.user._id });
+    if (!data) {
+      return res.status(404).send();
     }
+    res.send(data);
+
+    // if (data._id) {
+    //   res.status(200).send({ data: data });
+    // } else {
+    //   res.status(404).json({ msg: "Product was not Found" });
+    // }
   } catch (error) {
     //   console.log("Error in getting Product", error);
-    res.status(404).json({ msg: "Product not Found" });
+    res.status(500).send();
   }
 };
 
 //update product
 module.exports.updateProduct = async (req, res) => {
   try {
-    const product = await ProductModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    if (product._id) {
-      res.status(200).json({ msg: "Updated Product", product });
-    } else {
-      res.status(500).json({ msg: "Product not Found" });
+    const product = await ProductModel.findOne({
+      _id: req.params.id,
+      owner: req.user._id,
+    });
+    if (!product) {
+      res.status(404).send("Product owner not identified");
     }
+    await product.updateOne({ $set: req.body }, { new: true });
+    const updatedProduct = await product.save();
+    res.send(updatedProduct);
+    // const product = await ProductModel.findByIdAndUpdate(
+    //   req.params.id,
+    //   {
+    //     $set: req.body,
+    //   },
+    //   { new: true } // this gives the updated document after update
+    // );
+    // if (product._id) {
+    //   res.status(200).json({ msg: "Updated Product", product });
+    // } else {
+    //   res.status(404).json({ msg: "Product not Found" });
+    // }
   } catch (error) {
     // console.log("Error in updating Product", error);
-    res.status(500).json({ msg: "Product not Found" });
+    res.send(error);
   }
 };
 
 //delete product
 module.exports.deleteProduct = async (req, res) => {
   try {
-    const product = await ProductModel.findById(req.params.id);
-    try {
-      await product.delete();
-      res.status(200).json({ msg: "Product has been deleted..." });
-    } catch (error) {
-      res
-        .status(404)
-        .json({ msg: "Product was not found or already deleted !" });
+    // const product = await ProductModel.findById(req.params.id);
+    const product = await ProductModel.findOneAndDelete({
+      _id: req.params.id,
+      owner: req.user._id,
+    });
+    if (!product) {
+      res.status(404).send();
     }
+    res.send(product);
   } catch (error) {
     // console.log("Error in deleting Product", error);
     res.status(500).json(error);
