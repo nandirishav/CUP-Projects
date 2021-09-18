@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const ProductModel = require("./Product");
+const CartModel = require("./Cart");
+const OrderModel = require("./Order");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -36,10 +38,22 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// UserSchema.virtual("myProducts", {
+//   ref: "ProductModel",
+//   localField: "_id", // local field is where the local data is stored
+//   foreignField: "owner", // it is the name of the field of the product that created this relationship
+// });
+
 UserSchema.virtual("myProducts", {
-  ref: "ProductModel",
+  ref: "CartModel",
   localField: "_id", // local field is where the local data is stored
   foreignField: "owner", // it is the name of the field of the product that created this relationship
+});
+
+UserSchema.virtual("myOrders", {
+  ref: "OrderModel",
+  localField: "_id", // local field is where the local data is stored
+  foreignField: "userId", // it is the name of the field of the product that created this relationship
 });
 
 UserSchema.methods.toJSON = function () {

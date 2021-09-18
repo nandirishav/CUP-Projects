@@ -13,7 +13,7 @@ router.post(
     body("username").not().isEmpty().withMessage("Username is Empty"),
     body("email").not().isEmpty().withMessage("email is Empty"),
     body("password").not().isEmpty().withMessage("password is Empty"),
-    body("userType").not().isEmpty().withMessage("userType is Empty"),
+    // body("userType").not().isEmpty().withMessage("userType is Empty"),
   ],
   userController.createUser
 );

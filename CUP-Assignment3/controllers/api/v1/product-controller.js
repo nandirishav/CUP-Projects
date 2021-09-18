@@ -10,7 +10,7 @@ module.exports.createProduct = async (req, res) => {
     // const data = await ProductModel.create(req.body);
     const data = await new ProductModel({
       ...req.body,
-      owner: req.user._id,
+      owner: req.supplier._id,
     });
     await data.save();
     // console.log(data);
@@ -21,13 +21,13 @@ module.exports.createProduct = async (req, res) => {
   }
 };
 
-module.exports.getProduct = async (req, res) => {
+module.exports.getProducts = async (req, res) => {
   try {
     // const data = await ProductModel.find({});
 
     // approach 1
-    //find all products belonging to the respect. user
-    const data = await ProductModel.find({ owner: req.user._id });
+    //find all products belonging to the respect. supplier
+    const data = await ProductModel.find({ owner: req.supplier._id });
 
     //approach 2
     // await req.user.populate("myProducts").execPopulate();
@@ -35,6 +35,17 @@ module.exports.getProduct = async (req, res) => {
   } catch (error) {
     console.log("Error in getting Product", error);
     res.status(500).json({ msg: "Internal Server Error" });
+  }
+};
+
+// anyone can view all products
+module.exports.getAllProducts = async (req, res) => {
+  try {
+    const data = await ProductModel.find({});
+    res.send(data);
+  } catch (error) {
+    // console.log("Error in getting Product", error);
+    res.status(500).json({ msg: "All products could not be displayed ... " });
   }
 };
 
