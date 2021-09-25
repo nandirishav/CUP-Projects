@@ -29,7 +29,7 @@ const Tasks = ({ tasks }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const tasks = state.firestore.ordered.tasks;
   return {
     tasks: tasks,

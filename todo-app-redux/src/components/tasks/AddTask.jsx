@@ -18,7 +18,7 @@ class AddTask extends Component {
     e.preventDefault();
     this.props.addTask(this.state);
     document.getElementById("addTaskForm").reset();
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   render() {

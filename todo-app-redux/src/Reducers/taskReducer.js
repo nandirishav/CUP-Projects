@@ -18,6 +18,14 @@ const taskReducer = (state = {}, action) => {
       toast.error("A task remove error occured....");
       return state;
     }
+    case "EDIT_TASK": {
+      toast.success("A task was edited...");
+      return state;
+    }
+    case "EDIT_TASK_ERR": {
+      toast.error("A task edited error occured....");
+      return state;
+    }
     case "TOGGLE_CHECKED": {
       toast.info("A task status changed...");
       return state;

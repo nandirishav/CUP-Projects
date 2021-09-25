@@ -1,7 +1,7 @@
 export const addTask = (task) => {
   return (dispatch, getState, { getFirebase }) => {
     const firestore = getFirebase().firestore();
-    const authorId = getState().firebase.auth.uid
+    const authorId = getState().firebase.auth.uid;
 
     firestore
       .collection("tasks")
@@ -40,6 +40,29 @@ export const removeTask = (task) => {
       .catch((err) => {
         dispatch({
           type: "REMOVE_TASK_ERR",
+          err,
+        });
+      });
+  };
+};
+
+export const editTask = (task, update) => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firestore = getFirebase().firestore();
+    firestore
+      .collection("tasks")
+      .doc(task.id)
+      .update({
+        task: update,
+      }) //updated task value goes here
+      .then(() => {
+        dispatch({
+          type: "EDIT_TASK",
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "EDIT_TASK_ERR",
           err,
         });
       });

@@ -17,13 +17,13 @@ class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     this.props.signIn(this.state);
   };
 
   render() {
     const { uid } = this.props;
-     if(uid) return <Redirect to="/"/>
+    if (uid) return <Redirect to="/" />;
     return (
       <>
         <form
@@ -58,13 +58,13 @@ class SignIn extends Component {
             SignIn
           </button>
         </form>
-        </>
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   const uid = state.firebase.auth.uid;
   return {
     uid: uid,

@@ -4,8 +4,14 @@ import { removeTask } from "../../actions/taskActions";
 import { connect } from "react-redux";
 import Check from "./Check";
 import { toggleChecked } from "../../actions/taskActions";
+import { Dialog, DialogActions, DialogContent, Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { getFirebase } from "react-redux-firebase";
 
 const Task = ({ task, removeTask, toggleChecked }) => {
+  const [update, setUpdate] = useState("");
+  const [open, setOpen] = useState(false);
+
   const handleRemove = (task) => {
     removeTask(task);
   };
@@ -14,12 +20,24 @@ const Task = ({ task, removeTask, toggleChecked }) => {
     toggleChecked(task);
   };
 
-  // const editTodo = () => {
-  // db.collection("todos").doc(toUpdateId).update({
-  //   todo: update,
-  // });
-  // setOpen(false);
-  // };
+  const editTodo = (task) => {
+    // editTask(task, update);
+    const firestore = getFirebase().firestore();
+    firestore.collection("tasks").doc(task.id).update({
+      task: update,
+    });
+    setOpen(false);
+  };
+
+  const openUpdateDialog = (task) => {
+    setOpen(true);
+    // setToUpdateId(id);
+    setUpdate(update);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -28,9 +46,9 @@ const Task = ({ task, removeTask, toggleChecked }) => {
         <td>{moment(task.date.toDate()).calendar()}</td>
         <td
           style={{ cursor: "pointer" }}
-          // onClick={() => openUpdateDialog(task)}
+          onClick={() => openUpdateDialog(task)}
         >
-          <span class="material-icons">edit</span>
+          <span className="material-icons">edit</span>
         </td>
         <td>
           <Check onClick={() => handleCheck(task)} checked={task.checked} />
@@ -45,6 +63,28 @@ const Task = ({ task, removeTask, toggleChecked }) => {
           </span>
         </td>
       </tr>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Update Todo"
+            type="text"
+            fullWidth
+            name="updateTodo"
+            value={update}
+            onChange={(event) => setUpdate(event.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={() => editTodo(task)} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
