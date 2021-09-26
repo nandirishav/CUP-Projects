@@ -2,7 +2,7 @@ import React from "react";
 import AddTask from "../tasks/AddTask";
 import Tasks from "../tasks/Tasks";
 import { connect } from "react-redux";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 
 const Dashboard = ({ uid }) => {
   if (!uid) return <Redirect to="/signin" />;

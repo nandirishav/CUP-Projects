@@ -5,12 +5,20 @@ import { connect } from "react-redux";
 class AddTask extends Component {
   state = {
     task: "",
+    taskDesc: "",
     checked: "false",
   };
 
-  handleChange = (e) => {
+  handleTaskChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value,
+      // [e.target.id]: e.target.value,
+      task: e.target.value,
+    });
+  };
+
+  handleTaskDescChange = (e) => {
+    this.setState({
+      taskDesc: e.target.value,
     });
   };
 
@@ -18,7 +26,7 @@ class AddTask extends Component {
     e.preventDefault();
     this.props.addTask(this.state);
     document.getElementById("addTaskForm").reset();
-    // console.log(this.state);
+    console.log(this.state);
   };
 
   render() {
@@ -34,11 +42,19 @@ class AddTask extends Component {
           <legend> </legend>
           <div className="form-group">
             <label htmlFor="task">Add a task</label>
+            <h6>Task </h6>
             <input
               type="text"
               className="form-control"
-              id="task"
-              onChange={this.handleChange}
+              id="task-title"
+              onChange={this.handleTaskChange}
+            />
+            <h6 style={{ margin: "1rem 0" }}>Task Description</h6>
+            <input
+              type="text"
+              className="form-control"
+              id="task-desc"
+              onChange={this.handleTaskDescChange}
             />
           </div>
           <button type="submit" className="btn btn-primary">

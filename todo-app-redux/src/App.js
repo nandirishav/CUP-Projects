@@ -6,6 +6,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import NavBar from "./components/layout/NavBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TaskDetails from "./components/tasks/TaskDetails";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/" component={Dashboard} />
+          <Route exact path="/" component={Dashboard} />
+          <Route path="/taskDetails" component={TaskDetails} />
         </Switch>
       </BrowserRouter>
     </>

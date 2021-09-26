@@ -6,9 +6,14 @@ import { connect } from "react-redux";
 const NavItems = ({ signOut, uid }) => {
   if (uid) {
     return (
-      <Link to="/signin" className="nav-link" onClick={signOut}>
-        Sign Out
-      </Link>
+      <>
+        <Link to="/signin" className="nav-link" onClick={signOut}>
+          Sign Out
+        </Link>
+        <Link to="/" className="nav-link">
+          Dashboard
+        </Link>
+      </>
     );
   } else {
     return (

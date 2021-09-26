@@ -7,10 +7,25 @@ import { toggleChecked } from "../../actions/taskActions";
 import { Dialog, DialogActions, DialogContent, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { getFirebase } from "react-redux-firebase";
+import { Link, Redirect } from "react-router-dom";
 
-const Task = ({ task, removeTask, toggleChecked }) => {
+const Task = ({ task, removeTask, toggleChecked, uid }) => {
+  // const history = useHistory();
   const [update, setUpdate] = useState("");
   const [open, setOpen] = useState(false);
+
+  // const { uid } = props;
+  // const handleClick = () => {
+  //   setClick(!click);
+  //   if (click) {
+  //     console.log("Clicked");
+  //     return <Redirect to="/taskDetails" />;
+  //   }
+  // };
+
+  // const routeChange = () => {
+  //   history.push("/taskDetails");
+  // };
 
   const handleRemove = (task) => {
     removeTask(task);
@@ -42,7 +57,12 @@ const Task = ({ task, removeTask, toggleChecked }) => {
   return (
     <>
       <tr>
-        <th>{task.task}</th>
+        <th>
+          <Link to={{ pathname: "/taskDetails", state: { task } }}>
+            {" "}
+            {task.task}
+          </Link>
+        </th>
         <td>{moment(task.date.toDate()).calendar()}</td>
         <td
           style={{ cursor: "pointer" }}
@@ -89,6 +109,14 @@ const Task = ({ task, removeTask, toggleChecked }) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  // console.log(state);
+  const uid = state.firebase.auth.uid;
+  return {
+    uid: uid,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     removeTask: (task) => dispatch(removeTask(task)),
@@ -96,4 +124,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Task);
+export default connect(mapStateToProps, mapDispatchToProps)(Task);
