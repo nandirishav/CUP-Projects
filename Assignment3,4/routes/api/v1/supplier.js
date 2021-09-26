@@ -3,6 +3,7 @@ const router = express.Router();
 const { body } = require("express-validator");
 // import controller
 const supplierController = require("../../../controllers/api/v1/supplier-controller");
+const AdminAuth = require("../../../middleware/adminAuth");
 const SupplierAuth = require("../../../middleware/supplierAuth");
 
 //create a supplier
@@ -30,7 +31,7 @@ router.post(
 
 //logout
 router.post("/logout", SupplierAuth, supplierController.logout);
-router.get("/getAllSuppliers", SupplierAuth, supplierController.getSupplier);
+router.get("/getAllSuppliers", AdminAuth, supplierController.getSupplier); // only admin can view all suppliers
 router.get("/me", SupplierAuth, supplierController.getAuthenticatedSupplier);
 router.get("/getSupplier/:id", supplierController.findSupplierById); //may not be req. after we have created the /me route
 router.put(

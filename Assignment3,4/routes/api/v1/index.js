@@ -6,7 +6,7 @@ router.use("/user", require("./user"));
 
 //make 2 more routes for supplier and for admin
 router.use("/supplier", require("./supplier"));
-// router.use("/user", require("./admin"));
+router.use("/admin", require("./admin"));
 
 // router.use("/auth", require("./auth"));
 

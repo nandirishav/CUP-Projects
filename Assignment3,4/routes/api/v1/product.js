@@ -7,6 +7,7 @@ const productController = require("../../../controllers/api/v1/product-controlle
 const cartController = require("../../../controllers/api/v1/cart-controller");
 const orderController = require("../../../controllers/api/v1/order-controller");
 const SupplierAuth = require("../../../middleware/supplierAuth");
+const AdminAuth = require("../../../middleware/adminAuth");
 
 //create a product
 router.post(
@@ -17,6 +18,15 @@ router.post(
   ],
   SupplierAuth,
   productController.createProduct
+);
+router.post(
+  "/addProduct",
+  [
+    body("name").not().isEmpty().withMessage("Name is Empty"),
+    body("quantity").isFloat({ gt: 0 }).withMessage("Quantity is less than 0"),
+  ],
+  AdminAuth,
+  productController.addProduct
 );
 router.get("/getAllProducts", productController.getAllProducts);
 router.get("/getProducts", SupplierAuth, productController.getProducts); //supplier can view all the products added

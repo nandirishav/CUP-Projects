@@ -3,6 +3,7 @@ const router = express.Router();
 const { body } = require("express-validator");
 // import controller
 const userController = require("../../../controllers/api/v1/user-controller");
+const AdminAuth = require("../../../middleware/adminAuth");
 const auth = require("../../../middleware/auth");
 
 //create a user
@@ -30,7 +31,7 @@ router.post(
 //logout
 router.post("/logout", auth, userController.logout);
 
-router.get("/getAllUsers", auth, userController.getUser);
+router.get("/getAllUsers", AdminAuth, userController.getUser); // admin can view all users
 router.get("/me", auth, userController.getAuthenticatedUser);
 router.get("/getUser/:id", userController.findUserById); //may not be req. after we have created the /me route
 router.put("/updateUser/me", auth, userController.updateUser);

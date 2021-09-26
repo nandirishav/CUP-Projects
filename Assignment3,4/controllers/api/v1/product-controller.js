@@ -21,6 +21,26 @@ module.exports.createProduct = async (req, res) => {
   }
 };
 
+module.exports.addProduct = async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    // const data = await ProductModel.create(req.body);
+    const data = await new ProductModel({
+      ...req.body,
+      owner: req.admin._id,
+    });
+    await data.save();
+    // console.log(data);
+    res.status(200).send({ msg: "Product created Success", data: data });
+  } catch (error) {
+    console.log("Error in creating Product", error);
+    res.status(500).json({ msg: "Internal Server Error" });
+  }
+};
+
 module.exports.getProducts = async (req, res) => {
   try {
     // const data = await ProductModel.find({});
