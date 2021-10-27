@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import {
   Grid,
   Paper,
@@ -21,6 +23,50 @@ const Login = () => {
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
+
+  const history = useHistory();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    var data = {
+      email: email,
+      password: password,
+    };
+    // console.log(data);
+    var config = {
+      method: "post",
+      url: "http://localhost:8001/api/v1/user/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    };
+    axios(config)
+      .then(function (response) {
+        console.log("Response : ", response);
+        if (response.status === 200) {
+          console.log("login successful");
+          history.push({
+            pathname: "/viewAssignments",
+            state: { userData: response.data },
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log("Error while redirecting", error);
+      });
+  };
+
   return (
     <>
       <Grid>
@@ -33,8 +79,9 @@ const Login = () => {
           </Grid>
           <TextField
             className="classes.textfield"
-            label="Username"
-            placeholder="Enter username"
+            label="Email"
+            placeholder="Enter your email"
+            onChange={handleEmailChange}
             fullWidth
             margin="normal"
             required
@@ -43,6 +90,7 @@ const Login = () => {
             className="classes.textfield"
             label="Password"
             placeholder="Enter password"
+            onChange={handlePasswordChange}
             type="password"
             fullWidth
             margin="normal"
@@ -58,6 +106,7 @@ const Login = () => {
             variant="contained"
             style={btnstyle}
             fullWidth
+            onClick={handleLogin}
           >
             Log in
           </Button>

@@ -7,7 +7,7 @@ import { toggleChecked } from "../../actions/taskActions";
 import { Dialog, DialogActions, DialogContent, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { getFirebase } from "react-redux-firebase";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Task = ({ task, removeTask, toggleChecked, uid }) => {
   // const history = useHistory();

@@ -1,0 +1,487 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+main {
+  margin: 16px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background: rebeccapurple;
+  color: white;
+  font-family: Helvetica;
+  font-weight: 300;
+  height: 80px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rebeccapurple;
+  color: white;
+  font-family: Helvetica;
+  font-weight: 300;
+  height: 80px;
+}
+
+.navbar__title {
+  margin-right: auto;
+  font-size: 150%;
+  padding: 12px 16px;
+  color: whitesmoke;
+  text-decoration: none;
+  margin-left: 3.5rem;
+}
+
+.navbar__item {
+  padding: 16px 16px;
+  cursor: pointer;
+  vertical-align: middle;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.wrapper {
+  flex: 5;
+  padding-left: 2rem;
+}
+.assignment-status {
+  flex: 7;
+}
+
+.userProfile {
+  flex: 0;
+  padding-right: 2rem;
+}
+
+.userImg {
+  background-size: 32px 32px;
+  border: 0;
+  border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  margin: 0px;
+  position: relative;
+  height: 32px;
+  width: 32px;
+  z-index: 0;
+  border: 1px solid #ddd;
+}
+
+.as-items {
+  cursor: pointer;
+  vertical-align: middle;
+  color: whitesmoke;
+  text-decoration: none;
+  padding-right: 3rem;
+}
+
+.dropdown-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown {
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.dropdown-header {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-body {
+  padding: 5px;
+  border-top: 1px solid #e5e8ec;
+  display: none;
+}
+
+.dropdown-body.open {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.dropdown-item-dot {
+  opacity: 1;
+  color: #222;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon {
+  font-size: 13px;
+  color: #91a5be;
+  transform: rotate(0deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.icon.open {
+  transform: rotate(90deg);
+}
+
+.as-list {
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2% 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2% 8%;
+}
+
+.as-title {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.as-time-up {
+  margin-block-start: 0em;
+  margin-block-end: 0;
+  font-size: 0.9rem;
+}
+
+.as-desc {
+  width: 800px;
+  line-height: 1.8;
+  padding-bottom: 1rem;
+}
+
+.as-points {
+  margin-block-start: 0.2em;
+  margin-block-end: 0;
+  font-weight: 600;
+}
+
+.assignment {
+  background-color: rgb(245, 239, 239);
+  border-radius: 10px;
+  padding: 1rem 1rem 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.as-info p {
+  width: 800px;
+}
+
+.left {
+  flex: 9;
+}
+
+.right {
+  flex: 3;
+}
+
+/* home img css */
+
+.container-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 0 auto; */
+  padding: 2%;
+}
+
+.left-half {
+  padding: 0 3rem;
+  flex: 7;
+}
+
+.right-half {
+  flex: 5;
+}
+
+.title {
+  line-height: 56px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 3px;
+  color: #202124;
+}
+
+.text-info-home {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  line-height: 28px;
+  color: #5f6368;
+  text-align: center;
+}
+
+.homeImg {
+  width: 90%;
+  height: 90%;
+}
+
+.assignCard {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  padding: 1.5rem;
+  border: 0.0625rem solid #dadce0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1.8rem 0;
+}
+
+.as-details {
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem;
+}
+
+.assign-title {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+}
+
+.assign-desc {
+  font-size: 1rem;
+  padding-top: 0.35rem;
+}
+
+.points {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.8rem;
+  min-height: 2.25rem;
+  font-size: 1rem;
+}
+
+/* footer css */
+
+.footer-distributed {
+  background: #1e272e;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  height: 180px;
+  text-align: left;
+  font: bold 16px sans-serif;
+  /* position: fixed; */
+  left: 0;
+  bottom: 0;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+  width: 40%;
+  padding: 25x 50px;
+}
+
+/* The company logo */
+
+.footer-distributed h3 {
+  color: #ffffff;
+  font: normal 36px "Open Sans", cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span {
+  color: lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+  color: #222;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+  width: 35%;
+}
+
+.footer-distributed .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 400;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+  color: lightseagreen;
+  text-decoration: none;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight: 300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+.link-1 {
+  margin-left: 2rem;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+  .footer-distributed {
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i {
+    margin-left: 0;
+  }
+}

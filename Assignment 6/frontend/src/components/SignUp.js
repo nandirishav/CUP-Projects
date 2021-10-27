@@ -15,7 +15,7 @@ import LockIcon from "@mui/icons-material/Lock";
 const SignUp = () => {
   const paperStyle = {
     padding: 20,
-    height: "70vh",
+    height: "80vh",
     width: 280,
     margin: "3rem auto",
   };
@@ -32,8 +32,22 @@ const SignUp = () => {
             <h2>Sign Up</h2>
           </Grid>
           <TextField
+            label="Full Name"
+            placeholder="Enter your full name"
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
             label="Username"
             placeholder="Enter username"
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="Email"
+            placeholder="Enter email"
             fullWidth
             margin="normal"
             required
